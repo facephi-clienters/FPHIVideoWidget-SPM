@@ -1,27 +1,52 @@
-// swift-tools-version: 6.3
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version: 5.9
 
 import PackageDescription
 
 let package = Package(
     name: "FPHIVideoWidget-SPM",
+    platforms: [
+        .iOS(.v13),
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "FPHIVideoWidget-SPM",
-            targets: ["FPHIVideoWidget-SPM"]
+            targets: [
+                "FPHIVideoWidget-SPM",
+                "FPHIVideoWidget",
+            ]
         ),
+    ],
+    dependencies: [
+        .package(url: "git@github.com:facephi-clienters/SDK-FPHIDesignSystemResources-SPM.git", exact: "1.0.0"),
+        .package(url: "https://github.com/facephi-clienters/FPHISelphidDocumentReaderBundle-SPM.git", .upToNextMinor(from: "2.1.0")),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "FPHIVideoWidget-SPM"
+            name: "FPHIVideoWidget-SPM",
+            dependencies: [
+                "FPHIVideoWidget",
+                .product(name: "FPHIDesignSystemResources", package: "SDK-FPHIDesignSystemResources-SPM"),
+                .product(name: "FPHISelphidDocumentReaderBundle-SPM", package: "FPHISelphidDocumentReaderBundle-SPM"),
+            ],
+            path: ".",
+            exclude: [
+                "FPHIVideoWidget.podspec",
+                "FPHIVideoWidget-template.podspec",
+                "Package-template.swift",
+                "build",
+                "scripts",
+                "src",
+            ],
+            sources: ["Sources/FPHIVideoWidget-SPM"],
+            resources: [
+                .copy("compose/cocoapods/compose-resources"),
+                .copy("cocoapods/resources/extractor-resources"),
+            ]
         ),
-        .testTarget(
-            name: "FPHIVideoWidget-SPMTests",
-            dependencies: ["FPHIVideoWidget-SPM"]
+        .binaryTarget(
+            name: "FPHIVideoWidget",
+            url: "https://facephicorp.jfrog.io/artifactory/spm-pro-fphi/WIDGET/FPHIVideoWidget/0.0.10/FPHIVideoWidget.zip",
+            checksum: "80c88d3da49ee68c58a767cb5e3e835541f611cd469517b31dbbc3effd9ce78b"
         ),
-    ],
-    swiftLanguageModes: [.v6]
+    ]
 )
