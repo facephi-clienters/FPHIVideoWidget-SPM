@@ -18,7 +18,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "git@github.com:facephi-clienters/SDK-FPHIDesignSystemResources-SPM.git", exact: "1.0.0"),
-        .package(url: "https://github.com/facephi-clienters/FPHISelphidDocumentReaderBundle-SPM.git", .upToNextMinor(from: "2.1.0")),
+        .package(url: "https://github.com/facephi-clienters/FPHISelphidDocumentReaderBundle-SPM.git", exact: "2.1.2"),
     ],
     targets: [
         .target(
