@@ -17,7 +17,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "git@github.com:facephi-clienters/SDK-FPHIDesignSystemResources-SPM.git", exact: "1.0.0"),
+        .package(url: "git@github.com:facephi-clienters/SDK-FPHIDesignSystemResources-SPM.git", exact: "2.7.3"),
         .package(url: "https://github.com/facephi-clienters/FPHISelphidDocumentReaderBundle-SPM.git", exact: "2.1.2"),
     ],
     targets: [
@@ -45,7 +45,7 @@ let package = Package(
         ),
         .binaryTarget(
             name: "FPHIVideoWidget",
-            url: "https://facephicorp.jfrog.io/artifactory/spm-pro-fphi/WIDGET/FPHIVideoWidget/0.0.10/FPHIVideoWidget.zip",
+            url: "https://facephicorp.jfrog.io/artifactory/spm-pro-fphi/WIDGET/FPHIVideoWidget/0.0.11/FPHIVideoWidget.zip",
             checksum: "80c88d3da49ee68c58a767cb5e3e835541f611cd469517b31dbbc3effd9ce78b"
         ),
     ]
